@@ -12,6 +12,7 @@ class MyApplication: Application() {
             "targets" to "tags",
             "fields" to "contentId,title,viewCounter,startTime,lengthSeconds,thumbnailUrl",
             "_sort" to "-viewCounter",
+            "_limit" to "20",
             "_context" to "VOCALOID Ranking"
         )
     }

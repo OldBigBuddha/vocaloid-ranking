@@ -2,7 +2,8 @@
 
 buildscript {
     ext.kotlin_version = '1.2.71'
-    ext.fuel_version = '1.16.0'
+    ext.fuel_version = '1.15.1'
+    ext.moshi_version = '1.7.0'
     repositories {
         google()
         jcenter()
