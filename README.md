@@ -6,4 +6,4 @@ See ./LICENSE
 
 This application includes the work that is distributed in the Apache License 2.0
 
-(C) OldBigBuddha 2018.
+(C) 2018 OldBigBuddha.
