@@ -11,6 +11,10 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import net.oldbigbuddha.vocaloidranking.adapters.VideoRecyclerAdapter
 import net.oldbigbuddha.vocaloidranking.datas.ResponseData
+import net.oldbigbuddha.vocaloidranking.datas.VideoInfo
+import android.content.Intent
+import android.net.Uri
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +40,15 @@ class MainActivity : AppCompatActivity() {
                     val data = result.get()
                     val res = moshi.adapter(ResponseData::class.java).fromJson(data)
                     res?.let {
-                        recycler_main.adapter = VideoRecyclerAdapter(it.data, this@MainActivity)
+                        recycler_main.adapter = VideoRecyclerAdapter(
+                            it.data,
+                            this@MainActivity,
+                            object : VideoRecyclerAdapter.OnItemClickListener {
+                                override fun onItemClick(videoInfo: VideoInfo) {
+                                    // Reference: https://stackoverflow.com/questions/3004515/sending-an-intent-to-browser-to-open-specific-url
+                                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.nicovideo.jp/watch/${videoInfo.contentId}")))
+                                }
+                            })
                     } ?: throw IllegalAccessException("Response data mustn't be null")
                 }
             }

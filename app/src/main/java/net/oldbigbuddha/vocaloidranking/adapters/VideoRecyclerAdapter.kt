@@ -15,17 +15,29 @@ import java.util.*
 
 class VideoRecyclerAdapter(
     private val mVideoInfos: List<VideoInfo>,
-    private val mContext: Context
+    private val mContext: Context,
+    private val mListener: OnItemClickListener
 ): RecyclerView.Adapter<VideoRecyclerAdapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(videoInfo: VideoInfo)
+    }
 
     override fun getItemCount(): Int = mVideoInfos.size
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder = ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_video, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+        val rootView = LayoutInflater.from(mContext).inflate(R.layout.item_video, parent, false)
+        rootView.setOnClickListener {
+
+        }
+        return ViewHolder(rootView)
+    }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val videoInfo = mVideoInfos[position]
 
         holder?.let {
+            it.bindListener(videoInfo, mListener)
             it.tvTitle.text = videoInfo.title.replace("&amp;", "&")
             it.tvViewCount.text = videoInfo.viewCounter.toString()
             it.tvPublishDate.text = formatDate(videoInfo.startTime)
@@ -47,5 +59,11 @@ class VideoRecyclerAdapter(
         val tvTitle: TextView       = view.tv_title
         val tvViewCount: TextView   = view.tv_view_count
         val tvPublishDate: TextView = view.tv_publish_date
+
+        fun bindListener(item: VideoInfo, listener: OnItemClickListener) {
+            itemView?.let { it ->
+                it.setOnClickListener { listener.onItemClick(item) }
+            }
+        }
     }
 }
