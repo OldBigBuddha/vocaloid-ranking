@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_video.view.*
 import net.oldbigbuddha.vocaloidranking.R
 import net.oldbigbuddha.vocaloidranking.datas.VideoInfo
@@ -28,6 +29,13 @@ class VideoRecyclerAdapter(
             it.tvTitle.text = videoInfo.title.replace("&amp;", "&")
             it.tvViewCount.text = videoInfo.viewCounter.toString()
             it.tvPublishDate.text = formatDate(videoInfo.startTime)
+
+            Picasso.get()
+                .load(videoInfo.thumbnailUrl)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
+                .fit()
+                .into(holder.imageThumbnail)
         }?: IllegalAccessException("ViewHolder is null")
     }
 
