@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">VOCALOID Ranking</string>
+
+    <string name="dummy_title">【初音ミク】ぽっぴっぽー【本店だよ！！】</string>
+    <string name="dummy_view_counter">2536009</string>
+    <string name="dummy_length">5:34</string>
+    <string name="dummy_publish_date">2008/12/11 00:42</string>
 </resources>

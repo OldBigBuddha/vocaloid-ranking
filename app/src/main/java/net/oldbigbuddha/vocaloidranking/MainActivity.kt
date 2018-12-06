@@ -4,16 +4,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.github.kittinunf.fuel.Fuel
-import com.github.kittinunf.fuel.android.extension.responseJson
-import com.github.kittinunf.fuel.core.FuelManager
-import com.github.kittinunf.fuel.httpGet
-import com.github.kittinunf.fuel.moshi.responseObject
 import com.github.kittinunf.result.Result
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import net.oldbigbuddha.vocaloidranking.datas.ResponseData
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +16,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d("Debug", "Lunched")
-    }
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseString { request, response, result ->
+            //do something with response
+            when (result) {
+                is Result.Failure -> {
+                    Log.d("Request", request.toString())
+                    val ex = result.getException()
+                    ex.printStackTrace()
+                }
+                is Result.Success -> {
+                    val data = result.get()
+                    val res = moshi.adapter(ResponseData::class.java).fromJson(data)
+                    res?.let {
+                    } ?: throw IllegalAccessException("Response data mustn't be null")
+                }
+            }
+        }    }
 }

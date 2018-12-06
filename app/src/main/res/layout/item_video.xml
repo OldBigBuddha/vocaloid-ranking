@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:padding="8dp">
+
+  <android.support.v7.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:padding="8dp"
+      app:cardUseCompatPadding="true"
+      app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <ImageView
+          android:id="@+id/image_thumbnail"
+          android:layout_width="130px"
+          android:layout_height="100px"
+          android:src="#ddd"
+          android:layout_margin="12dp"
+          android:layout_gravity="center"
+          />
+
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:paddingStart="0dp"
+          android:paddingEnd="8dp"
+          android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="@string/dummy_title"
+            android:gravity="end"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+          <TextView
+              android:text="投稿日時: "
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"/>
+
+          <TextView
+              android:id="@+id/tv_publish_date"
+              android:text="@string/dummy_publish_date"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+          <TextView
+              android:text="視聴回数: "
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"/>
+
+          <TextView
+              android:id="@+id/tv_view_count"
+              android:text="@string/dummy_view_counter"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+      </LinearLayout>
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+</LinearLayout>
