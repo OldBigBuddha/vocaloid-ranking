@@ -6,15 +6,17 @@ labels: 機能
 assignees: OldBigBuddha
 
 ---
+__**`*`がついているものは必ずご記入ください**__
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+# About(*)
+追加して欲しい機能をお伝えください。
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+曖昧な表現でも大丈夫です。
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+# 実装案
+もし、こんな実装方法があるよとご存知の場合は、ぜひ教えてください。
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+どんな些細なことでも構いません。オススメのライブラリとかも大歓迎です。
+
+# その他
+もし上記に当てはまらないお伝えしたい内容がございましたら、こちらにご記入していただきますようよろしくお願いします。
