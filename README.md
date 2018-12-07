@@ -1,6 +1,6 @@
 # VOCALOID Ranking
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/OldBigBuddha/vocaloid-ranking)
+[![LICENSE](https://img.shields.io/badge/license-Apache--2.0-orange.svg)](https://github.com/OldBigBuddha/vocaloid-ranking)
 
 ニコニコ動画の情報を元にVOCALOID曲をスマホでランキング表示させます
 
