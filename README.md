@@ -2,6 +2,8 @@
 
 [![LICENSE](https://img.shields.io/badge/license-Apache--2.0-orange.svg)](https://github.com/OldBigBuddha/vocaloid-ranking)
 
+[![Github Lastest Releases](https://img.shields.io/github/release/OldBigBuddha/vocaloid-ranking.svg)]()
+
 ニコニコ動画の情報を元にVOCALOID曲をスマホでランキング表示させます
 
 # LICENSE
