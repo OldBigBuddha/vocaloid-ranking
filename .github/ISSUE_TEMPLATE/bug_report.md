@@ -1,10 +1,9 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+name: バグ報告/機能改善リクエスト
+about: バグ報告や、既存の機能に対するフィードバックのIssueに適用してください
+title: "[修正] 〜簡潔な説明〜"
+labels: 修正
+assignees: OldBigBuddha
 ---
 __**`*`がついているものは必ずご記入ください**__
 

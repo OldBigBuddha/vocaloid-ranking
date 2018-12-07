@@ -1,9 +1,9 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+name: 新規機能リクエスト
+about: 追加して欲しい機能に関するIssueに適用してください
+title: "[機能] 〜簡潔な説明〜"
+labels: 機能
+assignees: OldBigBuddha
 
 ---
 
