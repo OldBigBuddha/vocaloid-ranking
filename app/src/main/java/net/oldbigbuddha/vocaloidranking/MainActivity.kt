@@ -14,9 +14,12 @@ import net.oldbigbuddha.vocaloidranking.datas.ResponseData
 import net.oldbigbuddha.vocaloidranking.datas.VideoInfo
 import android.content.Intent
 import android.net.Uri
+import net.oldbigbuddha.vocaloidranking.dialogs.ProgressDialogFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var progressDialog: ProgressDialogFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
+
+        progressDialog = ProgressDialogFragment()
+        progressDialog.show(supportFragmentManager, "progress")
+
 
         Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseString { request, response, result ->
             //do something with response
@@ -49,8 +56,10 @@ class MainActivity : AppCompatActivity() {
                                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.nicovideo.jp/watch/${videoInfo.contentId}")))
                                 }
                             })
+                            progressDialog.dismiss()
                     } ?: throw IllegalAccessException("Response data mustn't be null")
                 }
             }
-        }    }
+        }
+    }
 }
