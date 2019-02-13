@@ -1,8 +1,8 @@
 package net.oldbigbuddha.vocaloidranking
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.result.Result
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recycler_main.layoutManager = LinearLayoutManager(this)
+        recycler_main.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
