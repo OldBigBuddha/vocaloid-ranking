@@ -22,16 +22,10 @@ object Dependencies {
     const val material = "com.google.android.material:material:1.1.0-alpha03"
 
     object Fuel {
-        private const val version = "1.15.1"
+        private const val version = "2.0.1"
         const val core = "com.github.kittinunf.fuel:fuel:$version"
         const val android = "com.github.kittinunf.fuel:fuel-android:$version"
         const val serialization = "com.github.kittinunf.fuel:fuel-kotlinx-serialization:$version"
-    }
-
-    object Moshi {
-        private const val version = "1.7.0"
-        const val core = "com.squareup.moshi:moshi:$version"
-        const val kotlin = "com.squareup.moshi:moshi-kotlin:$version"
     }
 
     object Test {

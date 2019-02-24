@@ -5,8 +5,10 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.github.kittinunf.result.Result
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.FuelError
+import com.github.kittinunf.fuel.serialization.responseObject
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.json.Json
@@ -28,18 +30,17 @@ class MainActivity : AppCompatActivity() {
 
         recycler_main.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
-//        val moshi = Moshi.Builder()
-//            .add(KotlinJsonAdapterFactory())
-//            .build()
-
         progressDialog = ProgressDialogFragment()
         progressDialog.show(supportFragmentManager, "progress")
 
-        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseString { request, response, result ->
-            val res = Json.unquoted.parse<ResponseData>( result.get() )
-                res?.let {
+        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseObject<ResponseData> { _, _, result ->
+            when (result) {
+                is Result.Failure -> {
+                    result.getException().printStackTrace()
+                }
+                is Result.Success -> {
                     recycler_main.adapter = VideoRecyclerAdapter(
-                        it.data,
+                        result.value.data,
                         this@MainActivity,
                         object : VideoRecyclerAdapter.OnItemClickListener {
                             override fun onItemClick(videoInfo: VideoInfo) {
@@ -53,41 +54,30 @@ class MainActivity : AppCompatActivity() {
                             }
                         })
                     progressDialog.dismiss()
-                } ?: throw IllegalAccessException("Response data mustn't be null")
 
+                }
+            }
         }
-        }
-//        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseObject<ResponseData> { _, _, result ->
-//            //do something with response
-//            when (result) {
-////                is Result.Failure -> {
-////                    Log.d("Request", request.toString())
-////                    val ex = result.getException()
-////                    ex.printStackTrace()
-////                }
-////                is Result.Success -> {
-//                    val data = result.get()
-////                    val res = moshi.adapter(ResponseData::class.java).fromJson(data)
-////                    val res = Json.unquoted.parse<ResponseData>(data)
-//                res?.let {
-//                    recycler_main.adapter = VideoRecyclerAdapter(
-//                        it.data,
-//                        this@MainActivity,
-//                        object : VideoRecyclerAdapter.OnItemClickListener {
-//                            override fun onItemClick(videoInfo: VideoInfo) {
-//                                // Reference: https://stackoverflow.com/questions/3004515/sending-an-intent-to-browser-to-open-specific-url
-//                                startActivity(
-//                                    Intent(
-//                                        Intent.ACTION_VIEW,
-//                                        Uri.parse("https://www.nicovideo.jp/watch/${videoInfo.contentId}")
-//                                    )
+//        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseString { request, response, result ->
+//            val res = Json.unquoted.parse<ResponseData>(result.get())
+//            res?.let {
+//                recycler_main.adapter = VideoRecyclerAdapter(
+//                    it.data,
+//                    this@MainActivity,
+//                    object : VideoRecyclerAdapter.OnItemClickListener {
+//                        override fun onItemClick(videoInfo: VideoInfo) {
+//                            // Reference: https://stackoverflow.com/questions/3004515/sending-an-intent-to-browser-to-open-specific-url
+//                            startActivity(
+//                                Intent(
+//                                    Intent.ACTION_VIEW,
+//                                    Uri.parse("https://www.nicovideo.jp/watch/${videoInfo.contentId}")
 //                                )
-//                            }
-//                        })
-//                    progressDialog.dismiss()
-//                } ?: throw IllegalAccessException("Response data mustn't be null")
-////                }
-////            }
-//            }
+//                            )
+//                        }
+//                    })
+//                progressDialog.dismiss()
+//            } ?: throw IllegalAccessException("Response data mustn't be null")
+//
 //        }
     }
+}

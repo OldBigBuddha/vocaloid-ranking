@@ -35,9 +35,7 @@ dependencies {
 
     implementation(Dependencies.Fuel.core)
     implementation(Dependencies.Fuel.android)
-
-    implementation(Dependencies.Moshi.core)
-    implementation(Dependencies.Moshi.kotlin)
+    implementation(Dependencies.Fuel.serialization)
 
     implementation(Dependencies.KotlinX.Serialization.runtime)
 
