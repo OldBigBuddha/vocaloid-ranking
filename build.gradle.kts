@@ -7,10 +7,8 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:3.3.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.21")
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Dependencies.Kotlin.version}")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${Dependencies.Kotlin.version}")
     }
 }
 
@@ -18,6 +16,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven("https://kotlin.bintray.com/kotlinx")
+
     }
 }
 

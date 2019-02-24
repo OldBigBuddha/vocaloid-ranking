@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_video.view.*
 import net.oldbigbuddha.vocaloidranking.R
 import net.oldbigbuddha.vocaloidranking.datas.VideoInfo

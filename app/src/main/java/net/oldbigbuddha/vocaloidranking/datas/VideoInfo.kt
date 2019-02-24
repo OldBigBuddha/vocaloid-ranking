@@ -1,5 +1,8 @@
 package net.oldbigbuddha.vocaloidranking.datas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class VideoInfo(
     val contentId: String,
     val title: String,
