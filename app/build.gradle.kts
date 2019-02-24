@@ -33,11 +33,13 @@ dependencies {
     implementation(Dependencies.AndroidX.cardView)
     implementation(Dependencies.material)
 
+    implementation(Dependencies.KotlinX.serialization)
+    implementation(Dependencies.KotlinX.coroutines)
+
     implementation(Dependencies.Fuel.core)
     implementation(Dependencies.Fuel.android)
+    implementation(Dependencies.Fuel.coroutines)
     implementation(Dependencies.Fuel.serialization)
-
-    implementation(Dependencies.KotlinX.Serialization.runtime)
 
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.Android.runner)

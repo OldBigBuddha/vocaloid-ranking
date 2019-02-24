@@ -6,10 +6,8 @@ object Dependencies {
     }
 
     object KotlinX {
-        object Serialization {
-            private const val version = "0.10.0"
-            const val runtime = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${version}"
-        }
+        const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
     }
 
     object AndroidX {
@@ -25,6 +23,7 @@ object Dependencies {
         private const val version = "2.0.1"
         const val core = "com.github.kittinunf.fuel:fuel:$version"
         const val android = "com.github.kittinunf.fuel:fuel-android:$version"
+        const val coroutines = "com.github.kittinunf.fuel:fuel-coroutines:$version"
         const val serialization = "com.github.kittinunf.fuel:fuel-kotlinx-serialization:$version"
     }
 
