@@ -27,6 +27,12 @@ object Dependencies {
         const val serialization = "com.github.kittinunf.fuel:fuel-kotlinx-serialization:$version"
     }
 
+    object Glide {
+        private const val version = "4.9.0"
+        const val glide = "com.github.bumptech.glide:glide:$version"
+        const val annotation = "com.github.bumptech.glide:compiler:$version"
+    }
+
     object Test {
         val junit = "junit:junit:4.12"
 

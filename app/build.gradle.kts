@@ -41,6 +41,9 @@ dependencies {
     implementation(Dependencies.Fuel.coroutines)
     implementation(Dependencies.Fuel.serialization)
 
+    implementation(Dependencies.Glide.glide)
+    annotationProcessor(Dependencies.Glide.annotation)
+
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.Android.runner)
     androidTestImplementation(Dependencies.Test.Android.espresso)

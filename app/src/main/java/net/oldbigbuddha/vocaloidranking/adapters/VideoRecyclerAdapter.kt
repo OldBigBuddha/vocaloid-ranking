@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_video.view.*
 import net.oldbigbuddha.vocaloidranking.R
 import net.oldbigbuddha.vocaloidranking.datas.VideoInfo
@@ -32,6 +33,14 @@ class VideoRecyclerAdapter(
         holder.tvTitle.text = videoInfo.title.replace("&amp;", "&")
         holder.tvViewCount.text = videoInfo.viewCounter.toString()
         holder.tvPublishDate.text = formatDate(videoInfo.startTime)
+
+        Glide
+            .with(mContext)
+            .load(videoInfo.thumbnailUrl)
+            .placeholder(R.drawable.placeholder)
+            .error(R.drawable.error)
+            .fitCenter()
+            .into(holder.imageThumbnail)
 
 //        Picasso.get()
 //            .load(videoInfo.thumbnailUrl)

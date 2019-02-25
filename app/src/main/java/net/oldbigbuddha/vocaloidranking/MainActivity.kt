@@ -30,9 +30,11 @@ class MainActivity : AppCompatActivity() {
         recycler_main.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         progressDialog = ProgressDialogFragment()
-        progressDialog.show(supportFragmentManager, "progress")
 
         runBlocking {
+
+            progressDialog.show(supportFragmentManager, "progress")
+
             val (_, _, result) = Fuel.get(
                 "/search",
                 listOf("q" to "VOCALOID殿堂入り")
@@ -60,32 +62,6 @@ class MainActivity : AppCompatActivity() {
                     progressDialog.dismiss()
 
                 }
-
-//        Fuel.get("/search", listOf("q" to "VOCALOID殿堂入り")).responseObject<ResponseData> { _, _, result ->
-//            when (result) {
-//                is Result.Failure -> {
-//                    result.getException().printStackTrace()
-//                }
-//                is Result.Success -> {
-//                    recycler_main.adapter = VideoRecyclerAdapter(
-//                        result.value.data,
-//                        this@MainActivity,
-//                        object : VideoRecyclerAdapter.OnItemClickListener {
-//                            override fun onItemClick(videoInfo: VideoInfo) {
-//                                // Reference: https://stackoverflow.com/questions/3004515/sending-an-intent-to-browser-to-open-specific-url
-//                                startActivity(
-//                                    Intent(
-//                                        Intent.ACTION_VIEW,
-//                                        Uri.parse("https://www.nicovideo.jp/watch/${videoInfo.contentId}")
-//                                    )
-//                                )
-//                            }
-//                        })
-//                    progressDialog.dismiss()
-//
-//                }
-//            }
-//        }
             }
         }
     }
